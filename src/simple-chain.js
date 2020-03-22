@@ -1,24 +1,31 @@
 const chainMaker = {
+  str: [],
   getLength() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    return this.str.length;
   },
   addLink(value) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    if (value === undefined) value = '';
+    this.str.push('( ' + value + ' )');
+    return this;
   },
   removeLink(position) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    if ( typeof position === "number" && position > 0 && position <= this.str.length ) {
+      this.str.splice(position - 1, 1);
+    } else {
+      this.str = [];
+      throw Error();   
+    }
+    return this;
   },
   reverseChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    this.str.reverse();
+    return this;
   },
   finishChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    var res = this.str;
+    this.str = [];
+    return res.join("~~");
   }
 };
 
-module.exports = chainMaker;
+module.exports = chainMaker; 
